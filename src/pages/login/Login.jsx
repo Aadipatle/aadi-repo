@@ -1,23 +1,25 @@
 import React from "react";
-import "./login.css";
+import "./Login.css";
 import {useFormik} from "formik";
-import { loginSchema } from "../../schema/yup";
+import { loginSchema } from "../../components/schema/Yup";
 
 
 const initialValues ={
   username:"",
   password:"",
+
 };
-const Login = ()=> {
+
+const Login =()=> {
  const {values,errors,handleBlur, touched, handleChange, handleSubmit} = useFormik({
     initialValues: initialValues,
     validationSchema: loginSchema,
-  
-    onSubmit:(values , action) => {
+   onSubmit:(values, action) => {
       console.log(values);
-     action.resetForm();
+      action.resetForm();
      }}
   );
+
   return (
     <div className="form-group">
       <h1>Login</h1>
@@ -46,11 +48,12 @@ const Login = ()=> {
           placeholder="Enter Your Password"/>
           { errors.password && touched.password ?(<p className="form-error"style={{ color: "red" }}>{errors.password}</p>)
           :null} 
-           <button className="btn" type="submit">Login</button>
+
+           <button type="submit" className="btn">Login</button>
           </form>
       </div>
     </div>
  
   );
-};
+}
 export default Login;
